@@ -30,7 +30,6 @@ namespace TracerLibrary
             lastTracer.StopTrace();
 
             var method = lastTracer.GetTraceResult();
-            curInfo.addTime(method.time);
 
             if (callStack.Count > 0)
             {
@@ -38,6 +37,7 @@ namespace TracerLibrary
                 newLastTracer.addChildResult(method);
             } else
             {
+                curInfo.addTime(method.time);
                 curInfo.addMethod(method);
             }
 

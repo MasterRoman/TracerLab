@@ -16,7 +16,7 @@ namespace TracerLibrary
             this.stopwatch = new Stopwatch();
 
             var traceTrace = new StackTrace();
-            var stackFrame = traceTrace.GetFrame(1);
+            var stackFrame = traceTrace.GetFrame(3);
             string methodName = stackFrame.GetMethod().Name;
             string className = stackFrame.GetMethod().ReflectedType.Name;
 

@@ -25,7 +25,7 @@ namespace TracerLibrary
             StringWriter stringWriter = new StringWriter();
             using (XmlTextWriter xmlWriter = new XmlTextWriter(stringWriter))
             {
-                //  xmlWriter.Formatting = Formatting.Indented;
+                xmlWriter.Formatting = Formatting.Indented;
                 xDoc.WriteTo(xmlWriter);
             }
             return stringWriter.ToString();
