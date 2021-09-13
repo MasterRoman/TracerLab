@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TracerLibrary
 {
-    class FileWriter : IWriter
+   public class FileWriter : IWriter
     {
 
         private string filePath;

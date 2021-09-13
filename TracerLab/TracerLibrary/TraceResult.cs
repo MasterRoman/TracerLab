@@ -8,7 +8,7 @@ namespace TracerLibrary
     {
         public IReadOnlyList<ThreadResult> threadResults { get; private set; }
 
-        TraceResult(List<ThreadResult> threadResults)
+        public TraceResult(List<ThreadResult> threadResults)
         {
             this.threadResults = threadResults;
         }
