@@ -25,7 +25,7 @@ namespace TracerLibrary
             StringWriter stringWriter = new StringWriter();
             using (XmlTextWriter xmlWriter = new XmlTextWriter(stringWriter))
             {
-              //  xmlWriter.Formatting = Formatting.Indented;
+                //  xmlWriter.Formatting = Formatting.Indented;
                 xDoc.WriteTo(xmlWriter);
             }
             return stringWriter.ToString();
@@ -46,22 +46,22 @@ namespace TracerLibrary
 
         private XElement configureMethodXElement(MethodResult methodResult)
         {
-            XElement methodXElement = new XElement("method", new XAttribute("name", methodResult.name),
-                                                            new XAttribute("className", methodResult.className),
-                                                            new XAttribute("time", methodResult.time)
-                                                   );
+            XElement methodXElement = configureBaseMethodXElement(methodResult);
             foreach (MethodResult childMethodResult in methodResult.childMethodsResult)
             {
-                if (childMethodResult.childMethodsResult.Count > 0)
-                {
-                    XElement childMethodXElement = configureMethodXElement(childMethodResult);
-                    methodXElement.Add(childMethodXElement);
-                }
+                var childMethod = configureMethodXElement(childMethodResult);
+                methodXElement.Add(childMethod);
             }
             return methodXElement;
         }
 
-
+        private XElement configureBaseMethodXElement(MethodResult methodResult)
+        {
+            return new XElement("method", new XAttribute("name", methodResult.name),
+                                                           new XAttribute("className", methodResult.className),
+                                                           new XAttribute("time", methodResult.time)
+                                                  );
+        }
     }
 
 }  
