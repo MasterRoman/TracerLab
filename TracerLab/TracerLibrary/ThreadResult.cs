@@ -4,12 +4,28 @@ using System.Text;
 
 namespace TracerLibrary
 {
-    struct ThreadResult
+    public struct ThreadResult
     {
-        public int id { get; }
+        public readonly int id;
         public double time { get; private set; }
 
-        public List<MethodResult> methodsResult { get; private set; }
+        public readonly List<MethodResult> methodsResult;
+        public ThreadResult(int id)
+        {
+            this.id = id;
+            this.time = 0;
+            this.methodsResult = new List<MethodResult>();
+        }
+
+        public void addMethod(MethodResult methodResult)
+        {
+            methodsResult.Add(methodResult);
+        }
+
+        public void addTime(double time)
+        {
+            this.time += time;
+        }
 
     }
 }

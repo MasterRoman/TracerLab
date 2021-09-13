@@ -4,13 +4,31 @@ using System.Text;
 
 namespace TracerLibrary
 {
-    struct MethodResult
+    public struct MethodResult
     {
-        public string name { get; }
-        public string className { get; }
+        public readonly string name;
+        public readonly string className;
 
         public double time { get; private set; }
 
-        public List<MethodResult> childMethodsResult { get; private set; }
+        public readonly List<MethodResult> childMethodsResult;
+             
+        public MethodResult(string name, string className)
+        {
+            this.name = name;
+            this.className = className;
+            this.time = 0;
+            this.childMethodsResult = new List<MethodResult>();
+        }
+
+        public void addChildMethod(MethodResult childMethod)
+        {
+            this.childMethodsResult.Add(childMethod);
+        }
+
+        public void setTime(double time)
+        {
+            this.time = time;
+        }
     }
 }
