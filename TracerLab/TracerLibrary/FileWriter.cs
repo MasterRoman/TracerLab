@@ -18,5 +18,10 @@ namespace TracerLibrary
         {
             System.IO.File.WriteAllText(filePath, text);
         }
+
+        public void changeFileName(string filePath)
+        {
+            this.filePath = filePath;
+        }
     }
 }
